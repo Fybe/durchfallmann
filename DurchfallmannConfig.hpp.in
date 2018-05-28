@@ -1,0 +1,2 @@
+#define Durchfallmann_VERSION_MAJOR @Durchfallmann_VERSION_MAJOR@
+#define Durchfallmann_VERSION_MINOR @Durchfallmann_VERSION_MINOR@
