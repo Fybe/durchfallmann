@@ -2,10 +2,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "Durchfallmann.hpp"
+#include "DurchfallmannConfig.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-	Durchfallmann *game = new Durchfallmann(800u,600u);
+	Durchfallmann *game = new Durchfallmann(800u,600u, 0u);
 
 	try {
 		game->init();
