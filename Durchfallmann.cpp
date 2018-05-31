@@ -7,6 +7,7 @@ Durchfallmann::Durchfallmann(uint32_t width, uint32_t height, uint32_t framerate
 
 Durchfallmann::~Durchfallmann()
 {
+	delete pCurrentScene;
 	delete pWindow;
 }
 
@@ -24,7 +25,7 @@ void Durchfallmann::init()
 void Durchfallmann::run()
 {
 	if (pWindow == nullptr)
-		throw noWindowException;
+		throw Exception("window creation failed");
 
 	sf::Clock frametimeClock;
 	while (pWindow->isOpen())
@@ -37,10 +38,24 @@ void Durchfallmann::run()
 		}
 
 		// Update and draw the current scene
-		pWindow->clear();
-		pCurrentScene->Update(frametimeClock.getElapsedTime().asSeconds());
-		frametimeClock.reset();
-		pWindow->draw(pCurrentScene);
+		pCurrentScene->update(frametimeClock.restart().asSeconds());
+		if(pCurrentScene->isDone())
+		{
+			Scene *pNextScene = pCurrentScene->getNextScene();
+			if(pNextScene == nullptr)
+			{
+				pWindow->close();
+			}
+			else
+			{
+				delete pCurrentScene;
+				pCurrentScene = pNextScene;
+			}
+			continue;
+		}
+
+		pWindow->clear(sf::Color::White);
+		pWindow->draw(*pCurrentScene);
 		pWindow->display();
 	}
 }

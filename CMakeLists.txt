@@ -4,6 +4,8 @@ project(Durchfallmann)
 set(Durchfallmann_VERSION_MAJOR	0)
 set(Durchfallmann_VERSION_MINOR 1)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 configure_file(
 	"${PROJECT_SOURCE_DIR}/DurchfallmannConfig.hpp.in"
 	"${PROJECT_BINARY_DIR}/DurchfallmannConfig.hpp"
@@ -24,6 +26,7 @@ add_executable(
 	${PROJECT_SOURCE_DIR}/Exception.cpp
 	${PROJECT_SOURCE_DIR}/Durchfallmann.cpp
 	${PROJECT_SOURCE_DIR}/Scene.cpp
-
+	${PROJECT_SOURCE_DIR}/MenuScene.cpp
+	${PROJECT_SOURCE_DIR}/HUD/Button.cpp
 )
 target_link_libraries(durchfallmann sfml-graphics sfml-window sfml-system)

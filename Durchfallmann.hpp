@@ -5,6 +5,7 @@
 
 #include "Exception.hpp"
 #include "Scene.hpp"
+#include "MenuScene.hpp"
 
 
 class Durchfallmann
@@ -24,7 +25,7 @@ private:
 	uint32_t framerateLimit;
 
 	Scene *pCurrentScene;
-	
+
 
 	void draw();
 };

@@ -2,10 +2,12 @@
 #include <exception>
 #include <string>
 
-class ExceptionNoWindow : public std::exception
+class Exception : public std::exception
 {
 public:
+	Exception(std::string exceptionMessage);
 	virtual const char *what() const noexcept;
-};
 
-extern ExceptionNoWindow noWindowException;
+private:
+	std::string exceptionMessage;
+};

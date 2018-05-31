@@ -12,10 +12,6 @@ int main(int argc, char **argv)
 		game->init();
 		game->run();
 	}
-	catch(ExceptionNoWindow &e) {
-		std::cout << e.what() << std::endl;
-		return 2;
-	}
 	catch(std::exception &e) {
 		std::cout << "unexpected exception: " << e.what() << std::endl;
 		return 1;

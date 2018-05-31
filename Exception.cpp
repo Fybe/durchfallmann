@@ -1,9 +1,8 @@
 #include "Exception.hpp"
 
-// function definitions
-const char *ExceptionNoWindow::what() const noexcept
-{ return "window hasn't been created yet"; }
+Exception::Exception(std::string exceptionMessage)
+	: exceptionMessage(exceptionMessage)
+{}
 
-
-// exception definition
-ExceptionNoWindow noWindowException;
+const char *Exception::what() const noexcept
+{ return exceptionMessage.c_str(); }
