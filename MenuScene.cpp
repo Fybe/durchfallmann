@@ -20,13 +20,27 @@ MenuScene::~MenuScene()
 
 Scene *MenuScene::getNextScene()
 {
-	return nullptr;
+	return new LevelScene();
 }
 
-void MenuScene::update(float frametime)
+void MenuScene::update(float frametime, sf::Vector2u const &windowSize)
 {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		setDone();
+
+	int32_t ms = clock.getElapsedTime().asMilliseconds();
+	if(ms > 3200)
+		this->setDone();
+		clock.restart();
+
+	if(ms > 2400)
+		pLoadingText->setString("Loading...");
+	else if(ms > 1600)
+		pLoadingText->setString("Loading..");
+	else if(ms > 800)
+		pLoadingText->setString("Loading.");
+	else
+		pLoadingText->setString("Loading");
 }
 
 void MenuScene::draw(sf::RenderTarget &target, sf::RenderStates states) const

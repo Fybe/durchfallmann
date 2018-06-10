@@ -24,8 +24,7 @@ void Durchfallmann::init()
 
 void Durchfallmann::run()
 {
-	if (pWindow == nullptr)
-		throw Exception("window creation failed");
+	sf::Vector2u windowSize = pWindow->getSize();
 
 	sf::Clock frametimeClock;
 	while (pWindow->isOpen())
@@ -38,7 +37,7 @@ void Durchfallmann::run()
 		}
 
 		// Update and draw the current scene
-		pCurrentScene->update(frametimeClock.restart().asSeconds());
+		pCurrentScene->update(frametimeClock.restart().asSeconds(), windowSize);
 		if(pCurrentScene->isDone())
 		{
 			Scene *pNextScene = pCurrentScene->getNextScene();

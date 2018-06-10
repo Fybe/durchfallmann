@@ -10,7 +10,7 @@ public:
 	// NOTE: This class neither does nor should free the memory of the returned scene upon destruction.
 	virtual Scene *getNextScene() = 0;
 
-	virtual void update(float frametime) = 0;
+	virtual void update(float frametime, sf::Vector2u const &windowSize) = 0;
 
 	bool isDone() const;
 

@@ -16,7 +16,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 include_directories(
-	"${PROJECT_SOURCE_DIR}"
+	"${CMAKE_CURRENT_SOURCE_DIR}"
 	"${CMAKE_CACHEFILE_DIR}"
 )
 
@@ -27,6 +27,7 @@ add_executable(
 	${PROJECT_SOURCE_DIR}/Durchfallmann.cpp
 	${PROJECT_SOURCE_DIR}/Scene.cpp
 	${PROJECT_SOURCE_DIR}/MenuScene.cpp
+	${PROJECT_SOURCE_DIR}/LevelScene.cpp
 	${PROJECT_SOURCE_DIR}/HUD/Button.cpp
 )
 target_link_libraries(durchfallmann sfml-graphics sfml-window sfml-system)
